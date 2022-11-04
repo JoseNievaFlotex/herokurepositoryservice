@@ -1,7 +1,9 @@
-import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Param, Delete, BadRequestException } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import * as bcrypt from 'bcrypt';
+
 
 @Controller('user')
 export class UserController {
@@ -13,6 +15,22 @@ export class UserController {
     return{message: 'Usuario Registrado' , user};
   }
 
+  @Post('login')
+  async login(@Body('email') email: string,
+              @Body('password') password: string) {
+                const user = await this.userService.findLogin({where: {email}});
+
+                if(!user)
+                {
+                   throw new BadRequestException('Crendenciales Invalido');
+                }
+
+                if(!await bcrypt.compare(password, user.password))
+                {
+                  throw new BadRequestException('Crendenciales Invalido');
+                }
+                return user;
+  }
   @Get()
   async findAll() {
     const data =  await this.userService.findAll();
