@@ -10,10 +10,11 @@ import { DATABASE, HOST, PASSWORD } from './config/constans';
   
   
       type: 'mssql',
-      host: '172.16.1.206',
-      username: 'RETAILUSER',
-      password: 'retail',
-      database: 'DBFLOTEX2022',
+      host: '18.168.10.231',
+      port: 1093,
+      username: 'Flotex2022',
+      password: "P9?9og32g",
+      database: "flotexpe_DB",
       entities: [__dirname + './**/**/*entity{.ts,.js}'],
       autoLoadEntities: true,
       synchronize: false,
