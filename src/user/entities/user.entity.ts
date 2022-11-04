@@ -1,6 +1,6 @@
 import { Entity,CreateDateColumn, Column, PrimaryGeneratedColumn,BeforeInsert, BeforeUpdate } from 'typeorm';
 import { hash } from 'bcrypt';
-@Entity({ name: 'user' })
+@Entity({ name: 'usuario' })
 export class User {
   @PrimaryGeneratedColumn()
   id: number;

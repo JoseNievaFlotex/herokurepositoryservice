@@ -8,8 +8,6 @@ import { UserModule } from './user/user.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
-  
-  
       type: 'mssql',
       host: '18.168.10.231',
       port: 1093,
@@ -18,7 +16,7 @@ import { UserModule } from './user/user.module';
       database: "flotexpe_DB",
       entities: [__dirname + './**/**/*entity{.ts,.js}'],
       autoLoadEntities: true,
-      synchronize: false,
+      synchronize: true,
       logging: true,
       logger: 'file',
       options: {
