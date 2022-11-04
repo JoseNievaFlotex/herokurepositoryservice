@@ -6,19 +6,18 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DATABASE, HOST, PASSWORD } from './config/constans';
 
 @Module({
-  imports: [TypeOrmModule.forRootAsync({
-    inject: [ConfigService],
-    useFactory: (config: ConfigService) => ({
+  imports: [TypeOrmModule.forRoot({
+  
+  
       type: 'mssql',
-      host: config.get(HOST),
+      host: '172.16.1.206',
       username: 'RETAILUSER',
-      password: config.get(PASSWORD),
-      database: config.get(DATABASE),
+      password: 'retail',
+      database: 'DBFLOTEX2022',
       entities: [__dirname + './**/**/*entity{.ts,.js}'],
       autoLoadEntities: true,
       synchronize: false,
       logging: true,
-      trustServerCertificate: true,
       logger: 'file',
       options: {
         encrypt: false,
@@ -28,11 +27,8 @@ import { DATABASE, HOST, PASSWORD } from './config/constans';
         },
       },
     }),
-  }),
-  ConfigModule.forRoot({
-    isGlobal: true,
-    envFilePath: '.env',
-  })],
+  ],
+ 
   controllers: [AppController],
   providers: [AppService],
 })
