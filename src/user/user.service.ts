@@ -57,6 +57,7 @@ export class UserService {
     }
     const payload = { id: findUser.id, name: findUser.name };
     const token = this.jwtService.sign(payload);
+  
     const data = { user: findUser, token };
 
     return data;
