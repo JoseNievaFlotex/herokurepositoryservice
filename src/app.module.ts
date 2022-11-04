@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DATABASE, HOST, PASSWORD } from './config/constans';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -27,7 +28,7 @@ import { DATABASE, HOST, PASSWORD } from './config/constans';
           minVersion: 'TLSv1',
         },
       },
-    }),
+    }), UserModule,
   ],
  
   controllers: [AppController],
