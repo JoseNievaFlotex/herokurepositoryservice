@@ -26,7 +26,7 @@ import { UserModule } from './user/user.module';
           minVersion: 'TLSv1',
         },
       },
-    }), UserModule,
+    }), UserModule, 
   ],
  
   controllers: [AppController],

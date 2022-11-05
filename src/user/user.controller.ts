@@ -52,7 +52,7 @@ export class UserController {
     return { message: 'Satisfactorio' };
   }
 
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @Get()
   async findAll() {
     const user = await this.userService.findAll();

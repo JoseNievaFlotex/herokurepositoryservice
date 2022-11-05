@@ -5,7 +5,7 @@ import * as session from 'express-session';
 import * as passport from 'passport';
 import { jwtConstants } from './user/jwtConstants';
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {cors: true});
   app.use(
     session({
       secret: jwtConstants.secret,
